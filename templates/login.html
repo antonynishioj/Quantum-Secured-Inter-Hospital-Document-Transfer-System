@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Login - Secure Hospital File Transfer{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="mb-4 text-center">Please Log In</h2>
+        <form method="post">
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="Hospital 1 or Hospital 2" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

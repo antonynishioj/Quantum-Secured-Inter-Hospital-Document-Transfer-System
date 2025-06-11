@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Hospital 2 Dashboard{% endblock %}
+{% block content %}
+<h2 class="mb-4">Hospital 2 Dashboard</h2>
+{% if file_content %}
+    <h4>Received File Content:</h4>
+    <div class="card bg-dark text-white mt-3">
+        <div class="card-body">
+            <pre>{{ file_content }}</pre>
+        </div>
+    </div>
+{% else %}
+    <p>No files received yet.</p>
+{% endif %}
+{% endblock %}

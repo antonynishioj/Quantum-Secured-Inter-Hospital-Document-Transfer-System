@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Secure Hospital File Transfer{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <!-- Optional custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+      /* Dark mode adjustments */
+      body {
+          background-color: #121212;
+          color: #e0e0e0;
+      }
+      .container, .jumbotron, .card {
+          background-color: #1e1e1e;
+          color: #ffffff;
+          border: none;
+      }
+      .jumbotron {
+          color: #ffffff;
+      }
+      .navbar {
+          background-color: #333333;
+      }
+      .navbar-brand, .navbar-nav .nav-link {
+          color: #ffffff !important;
+      }
+      .navbar-nav .nav-link:hover {
+          background-color: #007bff;
+          color: #ffffff !important;
+          transition: 0.3s ease;
+      }
+      /* Main content fade-in animation */
+      .fade-in {
+          opacity: 0;
+          animation: fadeIn 1.5s ease-in-out forwards;
+      }
+      @keyframes fadeIn {
+          from {
+              opacity: 0;
+              transform: translateY(10px);
+          }
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+      /* Button styling for dark mode */
+      .btn-primary {
+          background-color: #007bff;
+          border: none;
+      }
+      .btn-primary:hover {
+          background-color: #0056b3;
+      }
+      .alert-info {
+          background-color: #333;
+          border-color: #007bff;
+          color: #ffffff;
+      }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ url_for('index') }}">Secure File Transfer</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                {% if 'username' in session %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Logged in as {{ session['username']|capitalize }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4 fade-in">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert alert-info">
+              {% for message in messages %}
+                <p>{{ message }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='animations.js') }}"></script>
+</body>
+</html>

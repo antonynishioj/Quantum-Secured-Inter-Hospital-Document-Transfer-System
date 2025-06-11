@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Welcome - Secure Hospital File Transfer{% endblock %}
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to the Quantum Secure File Transfer System</h1>
+    <p class="lead">Securely transfer files between hospitals using quantum cryptography.</p>
+    <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg mt-4">Login</a>
+</div>
+{% endblock %}
