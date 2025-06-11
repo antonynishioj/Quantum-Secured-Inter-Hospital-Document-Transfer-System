@@ -45,3 +45,11 @@ This project implements a secure document transmission system between hospitals 
 1. **Install dependencies:**
    ```bash
    pip install flask qutip numpy PyPDF2
+
+## Output
+
+![image](https://github.com/user-attachments/assets/10a61bfd-ac38-421d-be9d-1abce0558b2b)
+
+![image](https://github.com/user-attachments/assets/5141f34a-9827-4ca5-b5d1-de05fd130f25)
+
+
